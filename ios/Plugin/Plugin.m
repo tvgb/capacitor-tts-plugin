@@ -6,4 +6,5 @@
 CAP_PLUGIN(TtsPlugin, "TtsPlugin",
            CAP_PLUGIN_METHOD(echo, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(getContacts, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(speak, CAPPluginReturnPromise);
 )

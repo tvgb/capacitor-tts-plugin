@@ -7,22 +7,11 @@ export class TtsPluginWeb extends WebPlugin implements TtsPluginPlugin {
 			name: 'TtsPlugin',
 			platforms: ['web'],
 		});
-  	}
-
-	async echo(options: { value: string }): Promise<{ value: string }> {
-		console.log('ECHO', options);
-		return options;
 	}
-
-	async getContacts(filter: string): Promise<{ results: any[] }> {
-		console.log('filter: ', filter);
-		return {
-			results: [{
-				firstName: 'Ola',
-				lastName: 'Halvorsen',
-				telephone: '09776969'
-			}]
-		};
+	  
+	async speak(options: { speakText: string }): Promise<string> {
+		console.log(`App would have said: ${options.speakText}`);
+		return 'lol';
 	}
 }
 

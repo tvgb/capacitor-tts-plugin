@@ -5,6 +5,5 @@ declare module '@capacitor/core' {
 }
 
 export interface TtsPluginPlugin {
-	echo(options: { value: string }): Promise<{ value: string }>;
-	getContacts(filter: string): Promise<{results: any[]}>;
+	speak(options: { speakText: string }): Promise<string>;
 }
