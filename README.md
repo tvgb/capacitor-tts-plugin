@@ -17,7 +17,7 @@ npm install capacitor-tts-plugin
 import { Plugins } from '@capacitor/core';
 import 'capacitor-tts-plugin';
 
-const { TtsPlugin } = Plugins;
+const { CapacitorTtsPlugin } = Plugins;
 
 
 options = {
@@ -27,7 +27,7 @@ options = {
 	cancel?: true // If true, cancels earlier speak commands (optional)
 }
 
-TtsPlugin.speak(options);
+CapacitorTtsPlugin.speak(options);
 ```
 
 ## Available function calls

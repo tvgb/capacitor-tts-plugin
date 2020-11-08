@@ -3,8 +3,6 @@
 
 // Define the plugin using the CAP_PLUGIN Macro, and
 // each method the plugin supports using the CAP_PLUGIN_METHOD macro.
-CAP_PLUGIN(TtsPlugin, "TtsPlugin",
-           CAP_PLUGIN_METHOD(echo, CAPPluginReturnPromise);
-           CAP_PLUGIN_METHOD(getContacts, CAPPluginReturnPromise);
-           CAP_PLUGIN_METHOD(speak, CAPPluginReturnPromise);
+CAP_PLUGIN(CapacitorTtsPlugin, "CapacitorTtsPlugin",
+	CAP_PLUGIN_METHOD(speak, CAPPluginReturnPromise);
 )

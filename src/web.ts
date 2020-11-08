@@ -1,10 +1,10 @@
 import { WebPlugin } from '@capacitor/core';
-import { TtsPluginPlugin, Options } from './definitions';
+import { ICapacitorTtsPlugin, Options } from './definitions';
 
-export class TtsPluginWeb extends WebPlugin implements TtsPluginPlugin {
+export class CapacitorTtsPluginWeb extends WebPlugin implements ICapacitorTtsPlugin {
 	constructor() {
 		super({
-			name: 'TtsPlugin',
+			name: 'CapacitorTtsPlugin',
 			platforms: ['web'],
 		});
 	}
@@ -15,9 +15,9 @@ export class TtsPluginWeb extends WebPlugin implements TtsPluginPlugin {
 	}
 }
 
-const TtsPlugin = new TtsPluginWeb();
+const CapacitorTtsPlugin = new CapacitorTtsPluginWeb();
 
-export { TtsPlugin };
+export { CapacitorTtsPlugin };
 
 import { registerWebPlugin } from '@capacitor/core';
-registerWebPlugin(TtsPlugin);
+registerWebPlugin(CapacitorTtsPlugin);

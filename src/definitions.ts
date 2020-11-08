@@ -1,10 +1,10 @@
 declare module '@capacitor/core' {
 	interface PluginRegistry {
-		TtsPlugin: TtsPluginPlugin;
+		CapacitorTtsPlugin: ICapacitorTtsPlugin;
 	}
 }
 
-export interface TtsPluginPlugin {
+export interface ICapacitorTtsPlugin {
 	speak(options: Options): Promise<void>;
 }
 
