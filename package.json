@@ -1,7 +1,7 @@
 {
-  "name": "tts-plugin",
+  "name": "capacitor-tts-plugin",
   "version": "0.0.1",
-  "description": "Plugin for text to speech for Android and iOS.",
+  "description": "Capacitor plugin for text to speech for iOS. (and soon Android)",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -56,10 +56,10 @@
   "swiftlint": "@ionic/swiftlint-config",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tvgb/tts-plugin"
+    "url": "https://github.com/tvgb/capacitor-tts-plugin"
   },
   "bugs": {
-    "url": "https://github.com/tvgb/tts-plugin/issues"
+    "url": "https://github.com/tvgb/capacitor-tts-plugin/issues"
   },
   "dependencies": {
     "codelyzer": "^6.0.1",

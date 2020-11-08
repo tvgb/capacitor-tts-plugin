@@ -12,16 +12,24 @@ public class TtsPlugin: CAPPlugin {
     let synthesizer = AVSpeechSynthesizer()
     
     @objc func speak(_ call: CAPPluginCall) {
-        let speakText = call.getString("speakText") ?? ""
+        let speakText = call.getString("text") ?? ""
+		let locale = call.getString("locale") ?? "en-GB"
+		let cancel = call.getBool("cancel") ?? true
+		let rate = call.getNumber("rate") ?? -1
         let utterance = AVSpeechUtterance(string: speakText)
-        utterance.voice = AVSpeechSynthesisVoice(language: "nb-NO")
-        //utterance.rate = 1.0
-                
-        if synthesizer.isSpeaking {
+
+        utterance.voice = AVSpeechSynthesisVoice(language: locale)
+
+		if rate > 0 {
+	        utterance.rate = rate
+		}
+       
+        if synthesizer.isSpeaking && cancel {
             synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         }
+
         synthesizer.speak(utterance)
         
-        call.success(["res": "Things have been said"]);
+        call.success();
     }
 }

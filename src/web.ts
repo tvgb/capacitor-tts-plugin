@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import { TtsPluginPlugin } from './definitions';
+import { TtsPluginPlugin, Options } from './definitions';
 
 export class TtsPluginWeb extends WebPlugin implements TtsPluginPlugin {
 	constructor() {
@@ -8,10 +8,10 @@ export class TtsPluginWeb extends WebPlugin implements TtsPluginPlugin {
 			platforms: ['web'],
 		});
 	}
-	  
-	async speak(options: { speakText: string }): Promise<string> {
-		console.log(`App would have said: ${options.speakText}`);
-		return 'lol';
+
+	async speak(options: Options): Promise<any> {
+		console.log(`TTS: ${options.text}`);
+		return;
 	}
 }
 
