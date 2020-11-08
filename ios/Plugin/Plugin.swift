@@ -15,7 +15,7 @@ public class CapacitorTtsPlugin: CAPPlugin {
 		let speakText = call.getString("text") ?? ""
 		let locale = call.getString("locale") ?? "en-GB"
 		let cancel = call.getBool("cancel") ?? true
-		let rate = call.getNumber("rate") ?? -1
+		let rate = call.getFloat("rate") ?? -1.0
 		let utterance = AVSpeechUtterance(string: speakText)
 
 		utterance.voice = AVSpeechSynthesisVoice(language: locale)
