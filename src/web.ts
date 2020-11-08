@@ -9,7 +9,7 @@ export class TtsPluginWeb extends WebPlugin implements TtsPluginPlugin {
 		});
 	}
 
-	async speak(options: Options): Promise<any> {
+	async speak(options: Options): Promise<void> {
 		console.log(`TTS: ${options.text}`);
 		return;
 	}

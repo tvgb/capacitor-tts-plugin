@@ -5,7 +5,7 @@ declare module '@capacitor/core' {
 }
 
 export interface TtsPluginPlugin {
-	speak(options: Options): Promise<any>;
+	speak(options: Options): Promise<void>;
 }
 
 export interface Options {
