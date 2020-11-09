@@ -1,10 +1,13 @@
-# capacitor-tts-plugin
-Capacitor plugin for text to speech for iOS. (and soon Android)
+# Capcacitor Text-To-Speech plugin
+Capacitor plugin for text to speech for iOS and Android.
 
 [![NPM Version][npm-image]][npm-url]
 
 ## Platforms
 iOS 11+
+Android 10+
+
+Other versions may also work, but these two are the only ones that have been tested.
 
 ## Install
 
@@ -35,6 +38,14 @@ CapacitorTtsPlugin.speak(options).then(() => {
 	// Something went wrong while speaking
 	console.log(error);
 })
+
+CapacitorTtsPlugin.stopSpeaking().then(() => {
+	// Do stuff when speaking has been stopped
+	console.log('Speaking stopped!');
+}).catch((error) => {
+	// Could not stop speaking
+	console.log(error);
+})
 ```
 
 ## Available function calls
@@ -46,9 +57,13 @@ function speak(options: Options): Promise<void>;
 function stopSpeaking(): Promise<void>:
 ```
 
+## Issues?
+Feature requests? Missing documentation? Something not working as intended or any other issues? Post a new issue on [Github][github-issues-url]!
+
 ## License
 
 [MIT](http://vjpr.mit-license.org)
 
 [npm-image]: https://img.shields.io/npm/v/capacitor-tts-plugin.svg
 [npm-url]: https://www.npmjs.com/package/capacitor-tts-plugin
+[github-issues-url]: https://github.com/tvgb/capacitor-tts-plugin/issues
