@@ -1,7 +1,11 @@
 package com.tvgb.cpt;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Debug;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.NativePlugin;
@@ -11,39 +15,75 @@ import com.getcapacitor.PluginMethod;
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
 import java.util.UUID;
 
 @NativePlugin
-public class CapacitorTtsPlugin extends Plugin implements TextToSpeech.OnInitListener {
+public class CapacitorTtsPlugin extends Plugin {
 
     TextToSpeech speaker;
+    private final String TAG = "TTS";
 
     @Override
-    public void onInit(int status) {
-        this.speaker = new TextToSpeech(getPluginHandle().getInstance().getContext(), this);
-    }
-
-    @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-
-        JSObject ret = new JSObject();
-        ret.put("value", value);
-        call.success(ret);
+    public void load() {
+        this.speaker = new TextToSpeech(getPluginHandle().getInstance().getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    speaker.setLanguage(Locale.UK);
+                }
+            }
+        });
     }
 
     @PluginMethod
     public void speak(PluginCall call) {
-        String text = "Hello World!";
+        String text = call.getString("text", "");
+        Locale locale = new Locale(call.getString("locale", "en-GB"));
+        boolean cancel = call.getBoolean("cancel", true);
+        float rate = call.getFloat("rate", 1.0f);
         String utteranceId = UUID.randomUUID().toString();
-        this.speaker.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+
+        if (this.speaker.isLanguageAvailable(locale) == TextToSpeech.LANG_MISSING_DATA
+                || this.speaker.isLanguageAvailable(locale) == TextToSpeech.LANG_NOT_SUPPORTED) {
+            call.reject("Invalid locale: " + locale.toString());
+            return;
+        } else {
+            this.speaker.setLanguage(locale);
+        }
+
+        if (text.length() > this.speaker.getMaxSpeechInputLength()) {
+            call.reject("Text is too long.");
+            return;
+        }
+
+        if (this.speaker.setSpeechRate(rate) == TextToSpeech.ERROR) {
+            call.reject("Invalid rate: " + rate);
+        };
+
+        int speakRes;
+
+        if (cancel) {
+            speakRes = this.speaker.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+        } else {
+            speakRes = this.speaker.speak(text, TextToSpeech.QUEUE_ADD, null, utteranceId);
+        }
+
+        if (speakRes == TextToSpeech.ERROR) {
+            call.reject("Could not speak text. Something went wrong");
+            return;
+        }
+
         call.success();
     }
 
     @PluginMethod
     public void stopSpeaking(PluginCall call) {
         if (this.speaker.isSpeaking()) {
-            this.speaker.stop();
+            if (this.speaker.stop() == TextToSpeech.ERROR) {
+                call.reject("Could not stop speaking.");
+                return;
+            };
         }
 
         call.success();
