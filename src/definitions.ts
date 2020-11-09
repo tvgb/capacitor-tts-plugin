@@ -6,6 +6,7 @@ declare module '@capacitor/core' {
 
 export interface ICapacitorTtsPlugin {
 	speak(options: Options): Promise<void>;
+	stopSpeaking(): Promise<void>;
 }
 
 export interface Options {

@@ -13,6 +13,11 @@ export class CapacitorTtsPluginWeb extends WebPlugin implements ICapacitorTtsPlu
 		console.log(`TTS: ${options.text}`);
 		return;
 	}
+
+	async stopSpeaking(): Promise<void> {
+		console.log('Stopped tts')
+		return;
+	}
 }
 
 const CapacitorTtsPlugin = new CapacitorTtsPluginWeb();
