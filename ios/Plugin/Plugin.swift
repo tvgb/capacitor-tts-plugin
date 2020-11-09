@@ -15,7 +15,7 @@ public class CapacitorTtsPlugin: CAPPlugin {
 		let speakText = call.getString("text") ?? ""
 		let locale = call.getString("locale") ?? "en-GB"
 		let cancel = call.getBool("cancel") ?? true
-		let rate = call.getNumber("rate") ?? -1
+		let rate = call.getFloat("rate") ?? -1.0
 		let utterance = AVSpeechUtterance(string: speakText)
 
 		utterance.voice = AVSpeechSynthesisVoice(language: locale)
@@ -32,4 +32,24 @@ public class CapacitorTtsPlugin: CAPPlugin {
 		
 		call.success();
 	}
+}
+
+class Speaker: NSObject {
+    let synth = AVSpeechSynthesizer()
+
+    override init() {
+        super.init()
+        synth.delegate = self
+    }
+
+    func speak(_ string: String) {
+        let utterance = AVSpeechUtterance(string: string)
+        synth.speakUtterance(utterance)
+    }
+}
+
+extension Speaker: AVSpeechSynthesizerDelegate {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        print("all done")
+    }
 }
