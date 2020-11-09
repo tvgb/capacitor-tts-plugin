@@ -1,4 +1,4 @@
-# Capcacitor Text-To-Speech plugin
+# Capacitor Text-To-Speech plugin
 Capacitor plugin for text to speech for iOS and Android.
 
 [![NPM Version][npm-image]][npm-url]
@@ -21,7 +21,6 @@ import { Plugins } from '@capacitor/core';
 import 'capacitor-tts-plugin';
 
 const { CapacitorTtsPlugin } = Plugins;
-
 
 options = {
 	text: 'Hello world', // Text to be said
@@ -48,6 +47,26 @@ CapacitorTtsPlugin.stopSpeaking().then(() => {
 })
 ```
 
+## Extra step for Android
+After install plugin with npm install, the plugin must be imported and added to android\app\src\main\java\YourProjectName\MainActivity.java.
+```java
+import com.tvgb.cpt.CapacitorTtsPlugin;
+
+public class MainActivity extends BridgeActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    // Initializes the Bridge
+    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+      // Additional plugins you've installed go here
+      // Ex: add(TotallyAwesomePlugin.class);
+      add(CapacitorTtsPlugin.class);
+    }});
+  }
+}
+```
+
 ## Available function calls
 ```typescript
 /** Promise resolves when speaking has finished */
@@ -56,6 +75,8 @@ function speak(options: Options): Promise<void>;
 /** Promise resolves when current speaking has been stopped or if no current speaking was detected. */
 function stopSpeaking(): Promise<void>:
 ```
+
+
 
 ## Issues?
 Feature requests? Missing documentation? Something not working as intended or any other issues? Post a new issue on [Github][github-issues-url]!
