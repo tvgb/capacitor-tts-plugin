@@ -8,7 +8,7 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 
 import com.getcapacitor.JSObject;
-import com.getcapacitor.NativePlugin;
+import com.getcapacitor.annotation.CapacitorPlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
@@ -18,7 +18,9 @@ import org.w3c.dom.Text;
 import java.util.Locale;
 import java.util.UUID;
 
-@NativePlugin
+@CapacitorPlugin(
+	name = "CapacitorTts"
+)
 public class CapacitorTtsPlugin extends Plugin {
 
     TextToSpeech speaker;
@@ -74,7 +76,7 @@ public class CapacitorTtsPlugin extends Plugin {
             return;
         }
 
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
@@ -86,6 +88,6 @@ public class CapacitorTtsPlugin extends Plugin {
             };
         }
 
-        call.success();
+        call.resolve();
     }
 }

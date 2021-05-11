@@ -1,7 +1,7 @@
-import { WebPlugin } from '@capacitor/core';
-import { ICapacitorTtsPlugin, Options } from './definitions';
+import {  WebPlugin } from '@capacitor/core';
+import { CapacitorTtsPlugin, Options } from './definitions';
 
-export class CapacitorTtsPluginWeb extends WebPlugin implements ICapacitorTtsPlugin {
+export class CapacitorTtsPluginWeb extends WebPlugin implements CapacitorTtsPlugin {
 	constructor() {
 		super({
 			name: 'CapacitorTtsPlugin',
@@ -15,14 +15,11 @@ export class CapacitorTtsPluginWeb extends WebPlugin implements ICapacitorTtsPlu
 	}
 
 	async stopSpeaking(): Promise<void> {
-		console.log('Stopped tts')
+		console.log('Stopped tts');
 		return;
 	}
 }
 
-const CapacitorTtsPlugin = new CapacitorTtsPluginWeb();
+const CapacitorTts = new CapacitorTtsPluginWeb();
 
-export { CapacitorTtsPlugin };
-
-import { registerWebPlugin } from '@capacitor/core';
-registerWebPlugin(CapacitorTtsPlugin);
+export { CapacitorTts };

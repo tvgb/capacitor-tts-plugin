@@ -65,7 +65,7 @@ public class CapacitorTtsPlugin: CAPPlugin, SpeakDelegate {
             }
         }
         
-        call.success()
+        call.resolve()
     }
     
     func speakDidFinish() {
