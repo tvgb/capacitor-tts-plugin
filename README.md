@@ -17,6 +17,7 @@ Different versions of the plugin support different versions of Capacitor:
 | v2         | v0.1.2 |
 | v3         | v1     |
 
+
 ### To install for Capacitor v3
 ```bash
 npm install capacitor-tts-plugin
@@ -37,7 +38,7 @@ options = {
 	cancel?: true // If true, cancels earlier speak commands. True is default (optional)
 }
 
-CapacitorTtsPlugin.speak(options).then(() => {
+CapacitorTts.speak(options).then(() => {
 	// Do stuff when speaking has finished
 	console.log('Speaking finished!');
 
@@ -46,7 +47,7 @@ CapacitorTtsPlugin.speak(options).then(() => {
 	console.log(error);
 })
 
-CapacitorTtsPlugin.stopSpeaking().then(() => {
+CapacitorTts.stopSpeaking().then(() => {
 	// Do stuff when speaking has been stopped
 	console.log('Speaking stopped!');
 }).catch((error) => {
@@ -65,15 +66,15 @@ After install plugin with npm install, the plugin must be imported and added to 
 import com.tvgb.cpt.CapacitorTtsPlugin;
 
 public class MainActivity extends BridgeActivity {
-   	
+	
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
 		// Additional plugins you've installed go here
-      	// Ex: registerPlugin(TotallyAwesomePlugin.class);
-        registerPlugin(CapacitorTtsPlugin.class);
-    }
+		// Ex: registerPlugin(TotallyAwesomePlugin.class);
+		registerPlugin(CapacitorTtsPlugin.class);
+	}
 }
 ```
 
