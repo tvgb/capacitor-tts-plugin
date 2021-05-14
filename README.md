@@ -5,22 +5,30 @@ Capacitor plugin for text to speech for iOS and Android.
 
 ## Platforms
 iOS 11+
-Android 10+
+Android 11+
 
 Other versions may also work, but these two are the only ones that have been tested.
 
-## Install
+## Installation
+Different versions of the plugin support different versions of Capacitor:
 
+| Capacitor  | Plugin |
+|------------|--------|
+| v2         | v0.1.2 |
+| v3         | v1     |
+
+### To install for Capacitor v3
 ```bash
 npm install capacitor-tts-plugin
 ```
+### To install for Capacitor v2
+```bash
+npm install capacitor-tts-plugin@0.1.2
+```
 
-## Usage
+## Usage (Capacitor v3)
 ```typescript
-import { Plugins } from '@capacitor/core';
-import 'capacitor-tts-plugin';
-
-const { CapacitorTtsPlugin } = Plugins;
+import { Options, CapacitorTts } from 'capacitor-tts-plugin';
 
 options = {
 	text: 'Hello world', // Text to be said
@@ -47,23 +55,25 @@ CapacitorTtsPlugin.stopSpeaking().then(() => {
 })
 ```
 
+## Usage (Capacitor v2)
+Read the documentation for v0.1.2 [here](https://github.com/tvgb/capacitor-tts-plugin/tree/0.1.2).
+
+
 ## Extra step for Android
 After install plugin with npm install, the plugin must be imported and added to android\app\src\main\java\YourProjectName\MainActivity.java.
 ```java
 import com.tvgb.cpt.CapacitorTtsPlugin;
 
 public class MainActivity extends BridgeActivity {
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+   	
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    // Initializes the Bridge
-    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
-      // Additional plugins you've installed go here
-      // Ex: add(TotallyAwesomePlugin.class);
-      add(CapacitorTtsPlugin.class);
-    }});
-  }
+		// Additional plugins you've installed go here
+      	// Ex: registerPlugin(TotallyAwesomePlugin.class);
+        registerPlugin(CapacitorTtsPlugin.class);
+    }
 }
 ```
 

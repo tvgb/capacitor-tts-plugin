@@ -1,20 +1,10 @@
 package com.tvgb.cpt;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Debug;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
-
-import com.getcapacitor.JSObject;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
-
-import org.w3c.dom.Text;
-
 import java.util.Locale;
 import java.util.UUID;
 
