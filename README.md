@@ -4,7 +4,7 @@ Capacitor plugin for text to speech for iOS and Android.
 [![NPM Version][npm-image]][npm-url]
 
 ## Platforms
-iOS 11+
+iOS 12+
 Android 11+
 
 Other versions may also work, but these two are the only ones that have been tested.
