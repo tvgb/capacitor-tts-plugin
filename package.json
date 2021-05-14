@@ -1,6 +1,6 @@
 {
   "name": "capacitor-tts-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Capacitor plugin for text to speech for iOS. (and soon Android)",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
