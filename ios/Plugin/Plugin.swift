@@ -13,7 +13,7 @@ public class CapacitorTtsPlugin: CAPPlugin, SpeakDelegate {
     let speaker = Speaker()
     var pluginCall: CAPPluginCall? = nil
     
-    public override init(bridge: CAPBridge, pluginId: String, pluginName: String) {
+    public override init(bridge: CAPBridgeProtocol, pluginId: String, pluginName: String) {
         super.init(bridge: bridge, pluginId: pluginId, pluginName: pluginName)
         self.speaker.delegate = self
     }
@@ -69,7 +69,7 @@ public class CapacitorTtsPlugin: CAPPlugin, SpeakDelegate {
     }
     
     func speakDidFinish() {
-        self.pluginCall?.success()
+        self.pluginCall?.resolve()
     }
 }
 
